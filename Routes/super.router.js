@@ -23,11 +23,11 @@ router.get("/:id", async (req, res) => {
     const reqData = {
       name: req.body.name,
       speed: req.body.speed,
-      price: parseInt(req.body.price),
-      halfYear: parseInt(req.body.halfYear),
-      fullYear: parseInt(req.body.fullYear),
-      modem : parseInt(req.body.modem),
-      wifi : parseInt(req.body.wifi)
+      price: (req.body.price),
+      halfYear: (req.body.halfYear),
+      fullYear: (req.body.fullYear),
+      modem : (req.body.modem),
+      wifi : (req.body.wifi)
     };
     try {
       const storeData = await Super.insertMany(reqData);
@@ -57,16 +57,16 @@ router.get("/:id", async (req, res) => {
       if (req.body.speed) {
         post.speed = req.body.speed;
       }
-      if (req.body.halfYear) {
+      if (req.body.halfYear || req.body.halfYear===0) {
         post.halfYear = req.body.halfYear;
       }
-      if (req.body.fullYear) {
+      if (req.body.fullYear || req.body.fullYear===0)  {
         post.fullYear = req.body.fullYear;
       }
-      if (req.body.modem) {
+      if (req.body.modem || req.body.modem===0) {
         post.modem = req.body.modem;
       }
-      if (req.body.wifi) {
+      if (req.body.wifi || req.body.wifi ===0) {
         post.wifi = req.body.wifi;
       }
      

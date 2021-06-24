@@ -54,10 +54,10 @@ router.patch("/:id", async (req, res) => {
     if (req.body.speed) {
       post.speed = req.body.speed;
     }
-    if (req.body.halfYear) {
+    if  (req.body.halfYear || req.body.halfYear===0) {
       post.halfYear = req.body.halfYear;
     }
-    if (req.body.fullYear) {
+    if (req.body.raderFullYear || req.body.raderFullYear ===0) {
       post.fullYear = req.body.fullYear;
     }
     await Family.updateOne({ _id: post._id }, { $set: post });

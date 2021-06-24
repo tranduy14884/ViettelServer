@@ -33,7 +33,7 @@ router.post("/", async (req, res) => {
   try {
     const storeData = await Company.insertMany(reqData);
   } catch (error) {
-    res.status(400).send(err);
+    res.status(400).send(error);
   }
   Company.find({})
     .then((data) => {
@@ -54,22 +54,22 @@ router.patch("/:id", async (req, res) => {
     if (req.body.price) {
       post.price = req.body.price;
     }
-    if (req.body.speed) {
+    if (req.body.speed ) {
       post.speed = req.body.speed;
     }
-    if (req.body.halfYear) {
+    if (req.body.halfYear || req.body.halfYear===0) {
       post.halfYear = req.body.halfYear;
     }
-    if (req.body.fullYear) {
+    if (req.body.fullYear || req.body.fullYear===0) {
       post.fullYear = req.body.fullYear;
     }
-    if (req.body.raderFullYear) {
+    if (req.body.raderFullYear || req.body.raderFullYear ===0) {
       post.raderFullYear = req.body.raderFullYear;
     }
-    if (req.body.Ip) {
+    if (req.body.Ip || req.body.Ip === 0) {
       post.Ip = parseInt(req.body.Ip);
     }
-    if (req.body.IpL) {
+    if (req.body.IpL || req.body.IpL ===0) {
       post.IpL = parseInt(req.body.IpL);
     }
     await Company.updateOne({ _id: post._id }, { $set: post });
@@ -90,7 +90,7 @@ router.delete("/:id", async (req, res) => {
       .catch((err) => {
         res.status(400).send(err);
       });
-  } catch (error) {
+  } catch {
     res.status(404).send(error);
   }
 });
