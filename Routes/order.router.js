@@ -23,9 +23,9 @@ router.get("/:id", async (req, res) => {
     const reqData = {
       name: req.body.name,
       location : req.body.location,
-      phone : parseInt(req.body.phone),
+      phone : (req.body.phone),
       packet : req.body.packet,
-      status : parseInt(req.body.status)
+      status : (req.body.status)
     };
     try {
       const storeData = await Order.insertMany(reqData);
@@ -45,24 +45,7 @@ router.get("/:id", async (req, res) => {
     try {
       const post = await Order.findById(reqId);
   
-    //   if (req.body.name) {
-    //     post.name = req.body.name;
-    //   }
-    //   if (req.body.price) {
-    //     post.price = req.body.price;
-    //   }
-    //   if (req.body.speed) {
-    //     post.speed = req.body.speed;
-    //   }
-    //   if (req.body.halfYear) {
-    //     post.halfYear = req.body.halfYear;
-    //   }
-    //   if (req.body.fullYear) {
-    //     post.fullYear = req.body.fullYear;
-    //   }
-    //   if (req.body.modem) {
-    //     post.modem = req.body.modem;
-    //   }
+
       if (req.body.status) {
         post.status = req.body.status;
       }
