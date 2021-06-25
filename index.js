@@ -13,9 +13,10 @@ const comboRoute = require('./Routes/combo.router');
 const superRoute = require('./Routes/super.router');
 const companyRoute = require('./Routes/company.router');
 const orderRoute = require('./Routes/order.router');
+const adminRoute = require('./Routes/admin.router');
 
 //connect database
-const db = mongoose.connect(`mongodb://localhost/viettel`, {
+const db = mongoose.connect(process.env.MONGO_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false,
@@ -30,11 +31,12 @@ app.use(cors());
 app.get('/', (req, res) => {
     res.send('Hello World!')
 })
-app.use('/familyApi', familyRoute);
-app.use('/comboApi', comboRoute);
-app.use('/superApi', superRoute);
-app.use('/companyApi', companyRoute);
-app.use('/orderApi', orderRoute);
+app.use('/api/familyApi', familyRoute);
+app.use('/api/comboApi', comboRoute);
+app.use('/api/superApi', superRoute);
+app.use('/api/companyApi', companyRoute);
+app.use('/api/orderApi', orderRoute);
+app.use('/api/auth/adminApi', adminRoute);
 
 
 app.listen(port, () => {
