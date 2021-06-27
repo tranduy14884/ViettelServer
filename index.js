@@ -36,7 +36,7 @@ app.use('/api/comboApi', comboRoute);
 app.use('/api/superApi', superRoute);
 app.use('/api/companyApi', companyRoute);
 app.use('/api/orderApi', orderRoute);
-app.use('/api/auth/adminApi', adminRoute);
+app.use('/api/adminApi', adminRoute);
 
 
 app.listen(port, () => {
