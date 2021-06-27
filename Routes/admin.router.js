@@ -38,7 +38,7 @@ router.post("/auth", async (req, res) => {
      
     );
     const resData = findData;
-    resData.password = "**************";
+    resData.password = "********";
     res.jsonp({
       jwt: token,
       account: resData,

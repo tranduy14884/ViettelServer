@@ -25,6 +25,7 @@ router.get("/:id", async (req, res) => {
       location : req.body.location,
       phone : (req.body.phone),
       packet : req.body.packet,
+      time : req.body.time,
       status : (req.body.status)
     };
     try {
@@ -44,12 +45,9 @@ router.get("/:id", async (req, res) => {
     const reqId = req.params.id;
     try {
       const post = await Order.findById(reqId);
-  
-
       if (req.body.status) {
         post.status = req.body.status;
       }
-     
       await Order.updateOne({ _id: post._id }, { $set: post });
       res.jsonp(post);
     } catch {

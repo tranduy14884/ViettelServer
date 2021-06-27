@@ -3,6 +3,7 @@ const orderSchema = new mongoose.Schema({
     name: String,
     phone: Number,
     location: String,
+    time: String,
     packet: String,
     status: Number
 }, {
