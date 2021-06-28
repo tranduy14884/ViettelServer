@@ -37,8 +37,8 @@ app.use('/api/superApi', superRoute);
 app.use('/api/companyApi', companyRoute);
 app.use('/api/orderApi', orderRoute);
 app.use('/api/adminApi', adminRoute);
+const PORT = process.env.PORT || 3000;
 
-
-app.listen(port, () => {
+app.listen(PORT, () => {
     console.log(`Example app listening at http://localhost:${port}`)
 })
