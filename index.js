@@ -6,7 +6,7 @@ const bodyParser = require('body-parser');
 // Using ES6 imports
 const app = express()
 const port = 3000
-// const Family = require('./Models/family');
+
 // const familyRoute = require('./Routes/family.router');
 const comboRoute = require('./Routes/combo.router');
 const superRoute = require('./Routes/super.router');
@@ -46,6 +46,8 @@ const familySchema = new mongoose.Schema({
 );
 const Family = mongoose.model('family', familySchema);
 app.get("/api/family", (req, res) => {
+    res.send('Family Api !')
+
   Family.find({})
     .then((data) => {
       res.jsonp(data);
