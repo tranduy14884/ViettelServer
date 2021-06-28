@@ -33,6 +33,16 @@ app.get('/', (req, res) => {
 app.get('/api', (req, res) => {
     res.send('Api server!')
 })
+const Family = require("../Models/family");
+router.get("/api/family", (req, res) => {
+  Family.find({})
+    .then((data) => {
+      res.jsonp(data);
+    })
+    .catch((err) => {
+      res.status(400).send(err);
+    });
+});
 app.use('/api/familyApi', familyRoute);
 app.use('/api/comboApi', comboRoute);
 app.use('/api/superApi', superRoute);
