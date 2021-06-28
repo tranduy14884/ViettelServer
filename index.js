@@ -6,8 +6,8 @@ const bodyParser = require('body-parser');
 // Using ES6 imports
 const app = express()
 const port = 3000
-const Family = require('./Models/family');
-const familyRoute = require('./Routes/family.router');
+// const Family = require('./Models/family');
+// const familyRoute = require('./Routes/family.router');
 const comboRoute = require('./Routes/combo.router');
 const superRoute = require('./Routes/super.router');
 const companyRoute = require('./Routes/company.router');
@@ -30,11 +30,22 @@ app.use(cors());
 app.get('/', (req, res) => {
     res.send('Hello World!')
 })
+//test
 app.get('/api', (req, res) => {
     res.send('Api server!')
 })
-const Family = require("../Models/family");
-router.get("/api/family", (req, res) => {
+const familySchema = new mongoose.Schema({
+    name: String,
+    speed: String,
+    price: Number,
+    halfYear: Number,
+    fullYear: Number
+}, {
+    collection: 'family'
+}
+);
+const Family = mongoose.model('family', familySchema);
+app.get("/api/family", (req, res) => {
   Family.find({})
     .then((data) => {
       res.jsonp(data);
@@ -43,7 +54,7 @@ router.get("/api/family", (req, res) => {
       res.status(400).send(err);
     });
 });
-app.use('/api/familyApi', familyRoute);
+// app.use('/api/familyApi', familyRoute);
 app.use('/api/comboApi', comboRoute);
 app.use('/api/superApi', superRoute);
 app.use('/api/companyApi', companyRoute);
