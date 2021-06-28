@@ -30,6 +30,9 @@ app.use(cors());
 app.get('/', (req, res) => {
     res.send('Hello World!')
 })
+app.get('/api', (req, res) => {
+    res.send('Api server!')
+})
 app.use('/api/familyApi', familyRoute);
 app.use('/api/comboApi', comboRoute);
 app.use('/api/superApi', superRoute);
@@ -39,5 +42,5 @@ app.use('/api/adminApi', adminRoute);
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
-    console.log(`Example app listening at http://localhost:${port}`)
+    console.log(`Example app listening at http://localhost:${PORT}`)
 })
