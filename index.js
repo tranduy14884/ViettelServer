@@ -16,7 +16,7 @@ const orderRoute = require('./Routes/order.router');
 const adminRoute = require('./Routes/admin.router');
 
 //connect database
-const db = mongoose.connect(process.env.MONGO_URL, {
+const db = mongoose.connect(process.env.MONGODB_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false,
