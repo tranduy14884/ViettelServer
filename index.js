@@ -13,7 +13,8 @@ const superRoute = require('./Routes/super.router');
 const companyRoute = require('./Routes/company.router');
 const orderRoute = require('./Routes/order.router');
 const adminRoute = require('./Routes/admin.router');
-
+const eventNewsRoute = require('./Routes/eventNews.router');
+const serviceRoute = require('./Routes/service.router');
 //connect database
 const db = mongoose.connect(process.env.MONGODB_URL, {
     useNewUrlParser: true,
@@ -36,6 +37,8 @@ app.use('/api/superApi', superRoute);
 app.use('/api/companyApi', companyRoute);
 app.use('/api/orderApi', orderRoute);
 app.use('/api/adminApi', adminRoute);
+app.use('/api/eventNewsApi', eventNewsRoute);
+app.use('/api/serviceApi', serviceRoute);
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
